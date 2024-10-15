@@ -43,3 +43,6 @@ tags
 
 # Blender stuff
 *.blend1
+
+python/*.ini
+python/PyCEPS.pyd
