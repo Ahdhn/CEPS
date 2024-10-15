@@ -12,14 +12,17 @@ endif()
 find_package(pybind11 REQUIRED)
 
 add_library(PyCEPS MODULE Parameterize.cpp bindings.cpp)
-target_link_libraries(PyCEPS PRIVATE pybind11::module)
-set_target_properties(PyCEPS PROPERTIES PREFIX "" SUFFIX ".pyd")
+if(WIN32)
+    set_target_properties(PyCEPS PROPERTIES PREFIX "" SUFFIX ".pyd")
+else()
+    set_target_properties(PyCEPS PROPERTIES PREFIX "" SUFFIX ".so")
+endif()
 
 target_include_directories(PyCEPS PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 # borrow args.hxx directly from polyscope
 target_include_directories(PyCEPS PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../deps/polyscope/deps/args/")
 target_include_directories(PyCEPS PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../src/")
-target_link_libraries(PyCEPS polyscope geometry-central CEPS)
+target_link_libraries(PyCEPS polyscope geometry-central CEPS pybind11::module)
 
 set_target_properties(PyCEPS PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_SOURCE_DIR}"
