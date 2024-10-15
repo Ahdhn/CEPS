@@ -13,7 +13,7 @@ find_package(pybind11 REQUIRED)
 
 add_library(PyCEPS MODULE Parameterize.cpp bindings.cpp)
 target_link_libraries(PyCEPS PRIVATE pybind11::module)
-set_target_properties(PyCEPS PROPERTIES SUFFIX ".pyd") #Ahmed: I needed this for Windows. Not sure about other systems 
+set_target_properties(PyCEPS PROPERTIES PREFIX "" SUFFIX ".pyd")
 
 target_include_directories(PyCEPS PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 # borrow args.hxx directly from polyscope
