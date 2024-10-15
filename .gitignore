@@ -46,3 +46,4 @@ tags
 
 python/*.ini
 python/PyCEPS.pyd
+!python/bunnyhead.obj
