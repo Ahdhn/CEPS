@@ -34,7 +34,16 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 make -j7
 bin/parameterize /mesh/path.obj --viz
 ```
-On Windows, Visual Studio can use the provided CMake files to build and run the project.
+
+
+## Python
+Follow the steps under `Getting started`, then 
+```bash
+cd CEPS/python 
+python test.py
+```
+The python binding has been tested on Windows and Ubuntu (WSL). `pybind11` can be installed from conda via `pip install pybind11`. For more info about pybind11, see [this](https://pybind11.readthedocs.io/en/stable/installing.html).
+
 
 ## Usage
 You can parameterize meshes by running `bin/parameterize /path/to/mesh` executable. The input mesh must be manifold and connected.
